@@ -207,6 +207,7 @@ void membaca() {
         fread(&arrcma,sizeof(arrcma),1,fp);
     }
     printf("membaca file selesai.\n");
+    fclose(fp);
 }
 
 int main() {
