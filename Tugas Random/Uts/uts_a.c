@@ -192,10 +192,21 @@ void urut(){
     printf("selesai diurutkan.\n");
     for ( i = 0; i < n; i++){
         arrcma[i].rangking=i+1;
-        fwrite(&arrcma[i],sizeof(arrcma),1,fp);
+        fwrite(&arrcma[i],sizeof(arrcma[i]),1,fp);
         printf("%d\t%s\t%.2f\t%f\t%d\n",arrcma[i].kode,arrcma[i].nama,arrcma[i].komponen,arrcma[i].nilai,arrcma[i].rangking);
     }
     fclose(fp);
+}
+
+void membaca() {
+    FILE *fp;
+    fp  = fopen("burung.txt","r+");
+    printf("Membaca file...\n");
+    for ( i = 0; i < n; i++)
+    {
+        fread(&arrcma,sizeof(arrcma),1,fp);
+    }
+    printf("membaca file selesai.\n");
 }
 
 int main() {
@@ -208,5 +219,6 @@ int main() {
     isi_burung();
     printf("Selesai!\n");
     urut();
+    membaca();
     printf("Juara lomba adalah %s dengan nilai %.2f\n",arrcma[0].nama,arrcma[0].nilai);
 }
