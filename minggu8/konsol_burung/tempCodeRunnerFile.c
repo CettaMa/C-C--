@@ -1,0 +1,1 @@
+fread(&komp,sizeof(komp),1,fj);
