@@ -115,6 +115,7 @@ void konsolidasi(){
                 jumlahnilai+=mhs.nilai;
                 cacah++;
                 fread(&mhs,sizeof(mhs),1,fj);
+                printf("cocok!\n");
             }
             rata=(float)jumlahnilai/cacah;
             printf("Mahasiswa dengan nim %s bernama %s memiliki rata-rata %f\n",currentnim,currentnama,rata);
