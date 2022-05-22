@@ -1,1 +1,0 @@
-isinilai(z);
