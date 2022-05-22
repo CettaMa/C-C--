@@ -12,14 +12,13 @@ struct burung
     float nilai;
     int rangking;
 }cetta,arrcma[10],temp;
-
 struct elemen
 {
     int kode;
     char faktor[10];
     int nilai_dasar;
     char unik[10];
-}komp,arrkom[10];
+}komp,arrkomp[10];
 
 void isinilai() {
     printf("Mengisi data...\n");
@@ -32,13 +31,12 @@ void isinilai() {
     strcpy(cetta.nama,"Mahadewa");
     cetta.kode=101;
     fwrite(&cetta, sizeof(cetta),1,fp);
-    strcpy(cetta.nama,"Si Gacor");
+    strcpy(cetta.nama,"Si Gaco");
     cetta.kode=102;
     fwrite(&cetta, sizeof(cetta),1,fp);
-    strcpy(cetta.nama,"Manis Manja");
+    strcpy(cetta.nama,"Manis Mnja");
     cetta.kode=103;
     fwrite(&cetta, sizeof(cetta),1,fp);
-
     komp.kode=101;
     strcpy(komp.faktor,"suara");
     komp.nilai_dasar=60;
@@ -102,7 +100,7 @@ void darifile(int mode) {
         fj=fopen ("komponen.txt","r");
         for ( i = 0; i < m; i++)
         {
-            fread(&arrkom[i],sizeof(arrkom),1,fj);
+            fread(&arrkomp[i],sizeof(arrkomp),1,fj);
         }
         printf("Mengisi array komponen selesai!\n");
         fclose(fj);
@@ -121,55 +119,114 @@ void darifile(int mode) {
         printf("data komponen dari file komponen.txt\n");
         for ( i = 0; i < m; i++)
         {
-            printf("%d\t%s\t%d\t%s\n",arrkom[i].kode,arrkom[i].faktor,arrkom[i].nilai_dasar,arrkom[i].unik);
+            printf("%d\t%s\t%d\t%s\n",arrkomp[i].kode,arrkomp[i].faktor,arrkomp[i].nilai_dasar,arrkomp[i].unik);
         }
         printf("\n");
         break;
     }   
 }
 
-void isi_burung(){
+// void isi_burung(){
+//     FILE *fp;
+//     FILE *fj;
+
+//     fp = fopen("burung.txt","r+");
+//     fj = fopen("komponen.txt","r+");
+//     for ( i = 0; i < n; i++)
+//     {
+//         float totalnilai=0;
+//         for ( j = 0; j < m; j++)
+//         {
+//             if (arrcma[i].kode==komp.kode)
+//             {
+//                 if (strcmp(komp.unik,"Gacor")==0){
+//                     totalnilai=totalnilai+(komp.nilai_dasar*1.3);
+//                 }
+//                 if (strcmp(komp.unik,"Nyaring")==0){
+//                     totalnilai=totalnilai+(komp.nilai_dasar*1.4);
+//                 }
+//                 if (strcmp(komp.unik,"Merdu")==0){
+//                     totalnilai=totalnilai+(komp.nilai_dasar*1.5);
+//                 }
+//                 if (strcmp(komp.unik,"Gagah")==0){
+//                     totalnilai=totalnilai+(komp.nilai_dasar*1.3);
+//                 }
+//                 if (strcmp(komp.unik,"Besar")==0){
+//                     totalnilai=totalnilai+(komp.nilai_dasar*1.25);
+//                 }
+//                 if (komp.nilai_dasar>75 || komp.unik[0] != '-' ){
+//                     arrcma[i].jml_bagus++;
+//                 } else {
+//                     totalnilai=totalnilai+komp.nilai_dasar;
+//                 }
+//             }
+            
+//         }
+//         arrcma[i].komponen=totalnilai;
+//         arrcma[i].nilai=arrcma[i].komponen*arrcma[i].jml_bagus;
+//     }
+//     fclose(fp);
+//     fclose(fj);
+// }
+
+void isi_burung2(){
     FILE *fp;
     FILE *fj;
 
     fp = fopen("burung.txt","r+");
     fj = fopen("komponen.txt","r+");
-    for ( i = 0; i < n; i++)
+
+    fread(&cetta,sizeof(cetta),1,fp);
+    fread(&komp,sizeof(komp),1,fj);
+    
+    int totalnilai,jumlah,curkode;
+    char curnama[20];
+    float rata;
+
+    if (feof(fj))
     {
-        float nilai_faktor=0;
-        for ( j = 0; j < m; j++)
+        printf("File kosong\n");
+    } else {
+        while (!feof(fp))
         {
-            if (arrcma[i].kode==arrkom[j].kode)
+            totalnilai=0;
+            jumlah=0;
+
+            curkode=cetta.kode;
+            strcpy(curnama,cetta.nama);
+            while (!feof(fj) && curkode==komp.kode)
             {
-                if (strcmp(arrkom[j].unik,"Gacor")==0){
-                    nilai_faktor=nilai_faktor+(arrkom[j].nilai_dasar*1.3);
+                if (strcmp(komp.unik,"Gacor")==0){
+                    totalnilai=totalnilai+(komp.nilai_dasar*1.3);
                 }
-                if (strcmp(arrkom[j].unik,"Nyaring")==0){
-                    nilai_faktor=nilai_faktor+(arrkom[j].nilai_dasar*1.4);
+                if (strcmp(komp.unik,"Nyaring")==0){
+                    totalnilai=totalnilai+(komp.nilai_dasar*1.4);
                 }
-                if (strcmp(arrkom[j].unik,"Merdu")==0){
-                    nilai_faktor=nilai_faktor+(arrkom[j].nilai_dasar*1.5);
+                if (strcmp(komp.unik,"Merdu")==0){
+                    totalnilai=totalnilai+(komp.nilai_dasar*1.5);
                 }
-                if (strcmp(arrkom[j].unik,"Gagah")==0){
-                    nilai_faktor=nilai_faktor+(arrkom[j].nilai_dasar*1.3);
+                if (strcmp(komp.unik,"Gagah")==0){
+                    totalnilai=totalnilai+(komp.nilai_dasar*1.3);
                 }
-                if (strcmp(arrkom[j].unik,"Besar")==0){
-                    nilai_faktor=nilai_faktor+(arrkom[j].nilai_dasar*1.25);
+                if (strcmp(komp.unik,"Besar")==0){
+                    totalnilai=totalnilai+(komp.nilai_dasar*1.25);
                 }
-                if (arrkom[j].nilai_dasar>75 || arrkom[j].unik[0] != '-' ){
-                    arrcma[i].jml_bagus++;
+                if (komp.nilai_dasar>75 || komp.unik[0] != '-' ){
+                    cetta.jml_bagus++;
+                    jumlah++;
                 } else {
-                    nilai_faktor=nilai_faktor+arrkom[j].nilai_dasar;
+                    totalnilai=totalnilai+komp.nilai_dasar;
                 }
+                
+                fread(&komp,sizeof(komp),1,fj);
             }
-            
+            rata=(float)totalnilai/jumlah;
+            printf("Burung dengan kode %d bernama %s memiliki nilai akhir %f\n",curkode,curnama,rata);
+            fread(&cetta,sizeof(cetta),1,fp);
         }
-        arrcma[i].komponen=nilai_faktor;
-        arrcma[i].nilai=arrcma[i].komponen*arrcma[i].jml_bagus;
     }
-    fclose(fp);
     fclose(fj);
-}
+} 
 
 void urut(){
     int pass;
@@ -178,7 +235,7 @@ void urut(){
     printf("Sebelum Diurutkan :\n");
 
     for ( i = 0; i < n; i++){
-        printf("%d\t%s\t%.2f\t%f\t%d\n",arrcma[i].kode,arrcma[i].nama,arrcma[i].komponen,arrcma[i].nilai,arrcma[i].rangking);
+        printf("%d\t%s\t%.2f\t%f\n",arrcma[i].kode,arrcma[i].nama,arrcma[i].komponen,arrcma[i].nilai);
     }
     
     printf("mengurutkan...\n");
@@ -193,24 +250,23 @@ void urut(){
     }
     printf("selesai diurutkan.\n");
     for ( i = 0; i < n; i++){
-        arrcma[i].rangking=i+1;
         fwrite(&arrcma[i],sizeof(arrcma[i]),1,fp);
-        printf("%d\t%s\t%.2f\t%f\t%d\n",arrcma[i].kode,arrcma[i].nama,arrcma[i].komponen,arrcma[i].nilai,arrcma[i].rangking);
+        printf("%d\t%s\t%.2f\t%f\n",arrcma[i].kode,arrcma[i].nama,arrcma[i].komponen,arrcma[i].nilai);
     }
     fclose(fp);
 }
 
-void membaca() {
-    FILE *fp;
-    fp  = fopen("burung.txt","r+");
-    printf("Membaca file...\n");
-    for ( i = 0; i < n; i++)
-    {
-        fread(&arrcma,sizeof(arrcma),1,fp);
-    }
-    printf("membaca file selesai.\n");
-    fclose(fp);
-}
+// void membaca() {
+//     FILE *fp;
+//     fp  = fopen("burung.txt","r+");
+//     printf("Membaca file...\n");
+//     for ( i = 0; i < n; i++)
+//     {
+//         fread(&arrcma,sizeof(arrcma),1,fp);
+//     }
+//     printf("membaca file selesai.\n");
+//     fclose(fp);
+// }
 
 int main() {
     isinilai();
@@ -218,10 +274,9 @@ int main() {
     {
         darifile(j);
     }
-    printf("Menghitung data...\n");
-    isi_burung();
-    printf("Selesai!\n");
     urut();
-    membaca();
-    printf("Juara lomba adalah %s dengan nilai %.2f\n",arrcma[0].nama,arrcma[0].nilai);
+    printf("Menghitung data...\n");
+    isi_burung2();
+    printf("Selesai!\n");
+
 }

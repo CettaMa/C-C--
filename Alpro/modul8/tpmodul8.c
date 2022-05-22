@@ -29,4 +29,6 @@ int main() {
         fprintf(fp,"%s %s %.2f\n",nama,nim,ipk);
     }
     fclose(fp);
+    
 }
+    
