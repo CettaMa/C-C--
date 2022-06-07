@@ -304,7 +304,7 @@ void cariburung(){
 void carinamaburung(){
     int awal=1,akhir=n,tengah,indeks=0,Pass,Imax;
     char inputnama[20];
-    printf("Mecari nama burung menggunakan binary search\n");
+    printf("\nMecari nama burung menggunakan binary search\n");
     printf("Mengurutkan..\n");
 
     FILE *fp;
