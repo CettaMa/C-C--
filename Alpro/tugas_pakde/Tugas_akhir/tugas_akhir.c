@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int n=3,m=6,i,j;
+int i,j;
 struct burung
 {
     int kode;
@@ -79,7 +79,7 @@ void isinilai() {
     printf("Data telah diisi!\n");
 }
 
-void darifile(int mode) {
+void darifile(int mode, int n,int m) {
     FILE *fp;
     FILE *fj;
 
@@ -116,7 +116,7 @@ void darifile(int mode) {
         printf("\n");
         break;
     
-    default:
+    case 3:
         printf("data komponen dari file komponen.txt\n");
         for ( i = 0; i < m; i++)
         {
@@ -124,51 +124,11 @@ void darifile(int mode) {
         }
         printf("\n");
         break;
+    default:
+    printf("gagal..\n");
+        break;
     }   
 }
-
-// void isi_burung(){
-//     FILE *fp;
-//     FILE *fj;
-
-//     fp = fopen("burung.txt","r+");
-//     fj = fopen("komponen.txt","r+");
-//     for ( i = 0; i < n; i++)
-//     {
-//         float totalnilai=0;
-//         for ( j = 0; j < m; j++)
-//         {
-//             if (arrcma[i].kode==komp.kode)
-//             {
-//                 if (strcmp(komp.unik,"Gacor")==0){
-//                     totalnilai=totalnilai+(komp.nilai_dasar*1.3);
-//                 }
-//                 if (strcmp(komp.unik,"Nyaring")==0){
-//                     totalnilai=totalnilai+(komp.nilai_dasar*1.4);
-//                 }
-//                 if (strcmp(komp.unik,"Merdu")==0){
-//                     totalnilai=totalnilai+(komp.nilai_dasar*1.5);
-//                 }
-//                 if (strcmp(komp.unik,"Gagah")==0){
-//                     totalnilai=totalnilai+(komp.nilai_dasar*1.3);
-//                 }
-//                 if (strcmp(komp.unik,"Besar")==0){
-//                     totalnilai=totalnilai+(komp.nilai_dasar*1.25);
-//                 }
-//                 if (komp.nilai_dasar>75 || komp.unik[0] != '-' ){
-//                     arrcma[i].jml_bagus++;
-//                 } else {
-//                     totalnilai=totalnilai+komp.nilai_dasar;
-//                 }
-//             }
-            
-//         }
-//         arrcma[i].komponen=totalnilai;
-//         arrcma[i].nilai=arrcma[i].komponen*arrcma[i].jml_bagus;
-//     }
-//     fclose(fp);
-//     fclose(fj);
-// }
 
 void isi_burung2(){
     FILE *fp;
@@ -225,7 +185,7 @@ void isi_burung2(){
     fclose(fj);
 } 
 
-void urut(){
+void urut(int m){
     int Pass,Imax;
     FILE *fp;
     fp = fopen("komponen.txt","r+");
@@ -270,8 +230,7 @@ void urut(){
 //     fclose(fp);
 // }
 
-void cariburung(){
-    int inputkode,ketemu;
+void cariburung(int *ketemu,int *inputkode, int n){
     FILE *fp;
     fp=fopen("burung.txt","r");
 
@@ -280,30 +239,26 @@ void cariburung(){
         fread(&arrcma[i],sizeof(arrcma[i]),1,fp);
     }
     printf("Prosedur mencari burung menggunakan sentinel\n");
-    printf("Masukan kode burung\t:");
-    scanf("%d",&inputkode);
-    scanf("%*c");
 
-    arrcma[n].kode=inputkode;
+    arrcma[n].kode=*inputkode;
     i=0;
 
-    while (arrcma[i].kode!=inputkode)
+    while (arrcma[i].kode!=*inputkode)
     {
         i++;
     }
     if (i<n)
     {
-        ketemu=i;
-        printf("Burung ditemukan pada indeks %d:\nNama\t:%s\nKode\t:%d\n",ketemu,arrcma[ketemu].nama,arrcma[ketemu].kode);
+        *ketemu=i;
     } else {
-        printf("Burung tidak ditemukan!\n");
+        *ketemu=-1;
     }
     fclose(fp);
 }
 
-void carinamaburung(){
-    int awal=1,akhir=n,tengah,indeks=0,Pass,Imax;
-    char inputnama[20];
+void carinamaburung(int *indeks,char inputnama[20],int n){
+    *indeks=0;
+    int awal=1,akhir=n,tengah,Pass,Imax;
     printf("\nMecari nama burung menggunakan binary search\n");
     printf("Mengurutkan..\n");
 
@@ -325,53 +280,65 @@ void carinamaburung(){
         arrcma[n-Pass+1]=temp;
     }
     
-    printf("selesai..\n");
-
-    for ( i = 1; i < n+1; i++)
-    {
-        printf("%d %s\n",arrcma[i].kode,arrcma[i].nama);
-    }
-    
-
-    printf("Masukan nama burung :");
-    fgets(inputnama,20,stdin);
-    strtok(inputnama,"\n");
-    while (awal<=akhir && indeks==0)
+    printf("selesai..\n");   
+    while (awal<=akhir && *indeks==0)
     {
         tengah=(awal+akhir)/2;
         printf("mid\t: %d\n",tengah);
         if (strcmp(inputnama,arrcma[tengah].nama)==0)
         {
-            indeks=tengah;
+            *indeks=tengah;
         } else if (inputnama[0]<=arrcma[tengah].nama[0]) {
             akhir=tengah-1;
         } else {
             awal=tengah+1;
         }
     }
-    if (indeks==0)
-    {
-        printf("Burung tidak ditemukan\n");
-    } else {
-        printf("Burung %s ditemukan pada indeks %d dengan kode %d\n",inputnama,indeks,arrcma[indeks].kode);
-    }
+    
     
 
 }
 
 int main() {
+    int indeksmain,kode,jumlahburung,jumlahkomp;
+    char namabur[20];
+    printf("Masukan Jumlah burung\t:");
+    scanf("%d",&jumlahburung);
+    printf("Masukan Jumlah Komponen\t:");
+    scanf("%d",&jumlahkomp);
     isinilai();
     for ( j = 0; j < 4; j++)
     {
-        darifile(j);
+        darifile(j,jumlahburung,jumlahkomp);
     }
-    urut();
+    urut(jumlahkomp);
     printf("Menghitung data...\n");
     isi_burung2();
     printf("Selesai!\n");
+
+    printf("Masukan kode burung\t:");
+    scanf("%d",&kode);
+    scanf("%*c");
     
-    cariburung();
+    cariburung(&indeksmain,&kode,jumlahburung);
 
-    carinamaburung();
+    if (indeksmain>=0)
+    {
+        printf("Burung ditemukan pada indeks %d:\nNama\t:%s\nKode\t:%d\n",indeksmain,arrcma[indeksmain].nama,arrcma[indeksmain].kode);
+    } else {
+        printf("Burung tidak ditemukan!\n");
+    }
+    
+    printf("Masukan nama burung :");
+    fgets(namabur,20,stdin);
+    strtok(namabur,"\n");
 
+    carinamaburung(&indeksmain,namabur,jumlahburung);
+
+    if (indeksmain==0)
+    {
+        printf("Burung tidak ditemukan\n");
+    } else {
+        printf("Burung %s ditemukan pada indeks %d dengan kode %d\n",arrcma[indeksmain].nama,indeksmain,arrcma[indeksmain].kode);
+    }
 }

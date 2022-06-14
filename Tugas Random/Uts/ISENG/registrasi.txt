@@ -1,0 +1,13 @@
+kalkulus 09.30
+fisika 12.30
+kalkulus 09.30
+fisika 12.30
+kalkulus 09.30
+fisika 12.30
+kalkulus 09.30
+fisika 12.30
+
+for
+fscanf(fp,"%s %s",matkul,jam);
+prinf %s %s (matkul,jam);
+for selasa
