@@ -1,1 +1,1 @@
-printf("Sebelum Diurutkan :\n");
+ fwrite(&arrkomp[i],sizeof(arrkomp[i]),1,fp);
