@@ -1,1 +1,1 @@
- fwrite(&arrkomp[i],sizeof(arrkomp[i]),1,fp);
+komp.kode
