@@ -155,7 +155,7 @@ void isi_burung2(){
 
             curkode=cetta.kode;
             strcpy(curnama,cetta.nama);
-            while (!feof(fj) && curkode==komp.kode)
+            while (!feof(fj) && cetta.kode==komp.kode)
             {
                 if (strcmp(komp.unik,"Gacor")==0){
                     totalnilai=totalnilai+(komp.nilai_dasar*1.3);
