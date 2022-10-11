@@ -1,5 +1,5 @@
 dict1 = {
-    "barang1" : {
+    1 : {
         "kode" : 100 ,
         "nama" : "bayam",
         "jenis" : "sayuran",
@@ -9,7 +9,7 @@ dict1 = {
         "untung" :0
     } ,
 
-    "barang2" : {
+    2 : {
         "kode" : 200 ,
         "nama" : "kangkung",
         "jenis" : "sayuran",
@@ -19,7 +19,7 @@ dict1 = {
         "untung" : 0
     } ,
 
-    "barang3" : {
+    3 : {
         "kode" : 300 ,
         "nama" : "beras",
         "jenis" : "pokok",
@@ -29,7 +29,7 @@ dict1 = {
         "untung" : 0
     } ,
 
-    "barang4" : {
+    4 : {
         "kode" : 400 ,
         "nama" : "kerupuk",
         "jenis" : "tambahan",
@@ -39,7 +39,7 @@ dict1 = {
         "untung" : 0
     } ,
 
-    "barang5" : {
+    5 : {
         "kode" : 500 ,
         "nama" : "ubi",
         "jenis" : "pokok",
@@ -49,7 +49,7 @@ dict1 = {
         "untung" : 0
     } ,
 
-    "barang2" : {
+    6 : {
         "kode" : 600 ,
         "nama" : "wortel",
         "jenis" : "sayuran",
@@ -134,6 +134,19 @@ dict2 = {
         "diskon" : 10
     }
 }
-for x in dict2:
-    print(dict2[x])
 
+lap=(sorted(dict2.items(), key=lambda item: item[1]["kode"]))
+
+sorted_dict2=dict(lap)
+for x in sorted_dict2 :
+    print(sorted_dict2[x])
+
+
+#nomor.D
+for barang1,keys1 in dict1.items():
+    for barang2,keys2 in sorted_dict2.items():
+        if keys1["kode"]==keys2["kode"] :
+            print("ketemu!!",keys1["kode"])
+        else :
+            print("Nyoo!!")
+            continue
