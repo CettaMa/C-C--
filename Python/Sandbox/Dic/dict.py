@@ -59,8 +59,6 @@ dict1 = {
         "untung" : 0
     }
 }
-for x in dict1:
-    print(dict1[x])
 
 dict2 = {
     "barang1" : {
@@ -136,17 +134,49 @@ dict2 = {
 }
 
 lap=(sorted(dict2.items(), key=lambda item: item[1]["kode"]))
-
 sorted_dict2=dict(lap)
-for x in sorted_dict2 :
-    print(sorted_dict2[x])
-
 
 #nomor.D
 for barang1,keys1 in dict1.items():
+    dict1[barang1]["sisa"]= dict1[barang1]["jumlah"]
+    untung=0
     for barang2,keys2 in sorted_dict2.items():
         if keys1["kode"]==keys2["kode"] :
-            print("ketemu!!",keys1["kode"])
+            # print("ketemu!!",keys1["kode"])
+            sisa=keys1["sisa"]-keys2["jumlah"]
+            dict1[barang1]["sisa"]=sisa
+            # print(dict1[barang1]["sisa"])
+
+            if keys2["diskon"]==0 :
+                untung +=keys2["harga"]-keys1["Hargabeli"]
+            else :
+                untung +=(keys2["harga"]*(1-(keys2["diskon"]/100)))-keys1["Hargabeli"]
         else :
-            print("Nyoo!!")
             continue
+    dict1[barang1]["untung"]=untung
+
+print("Data Dagangan")
+for keys,item in dict1.items() :
+    print(item["kode"],item["nama"],"\t",item["jenis"],"    \t",item["jumlah"],"\t",item["Hargabeli"],"\t",item["sisa"],"\t",item["untung"])
+lap=(sorted(dict1.items(), key=lambda item: item[1]["jenis"]))
+dict1=dict(lap)
+print("\nSetelah diurutkan Berdasarkan Jenis :")
+for keys,item in dict1.items() :
+    print(item["kode"],item["nama"],"\t",item["jenis"],"    \t",item["jumlah"],"\t",item["Hargabeli"],"\t",item["sisa"],"\t",item["untung"])
+
+untungpokok=0
+untungsayuran=0
+untungtambahan=0
+
+for keys,item in dict1.items():
+    if item["jenis"]=="pokok":
+        untungpokok+=item["untung"]
+    if item["jenis"]=="sayuran":
+        untungsayuran+=item["untung"]
+    if item["jenis"]=="tambahan":
+        untungtambahan+=item["untung"]
+
+print("\nlaporan Keuntungan dari tiap jenis\t:")
+print("1\tPokok\t",untungpokok)
+print("2\tSayuran\t",untungsayuran)
+print("3\tPokok\t",untungtambahan)
