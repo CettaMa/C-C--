@@ -1,87 +1,144 @@
-# #Tugas 1
-# '''
-# nama = input("Masukan Nama :")
-# umur = input("Masukan Umur :")
-# umur =int (umur) + 10
-# print("Umur ",nama," Sepuluh tahun lagi ",umur)'''
+barang = {
+    1 : {
+        "kode" : 100,
+        "nama" : "Bayam",
+        "jenis": "Sayuran",
+        "jumlah1": 15,
+        "hargabeli":1500, 
+        "sisa" : 0,
+        "untung" : 0
+    },
+    2 : {
+        "kode" : 200,
+        "nama" : "Kangkung",
+        "jenis": "Sayuran",
+        "jumlah1": 10,
+        "hargabeli":1000, 
+        "sisa" : 0,
+        "untung" : 0
+    },
+    3 : {
+        "kode" : 300,
+        "nama" : "Beras",
+        "jenis": "pokok",
+        "jumlah1": 25,
+        "hargabeli":10000, 
+        "sisa" : 0,
+        "untung" : 0
+    },
+    4 : {
+        "kode" : 400,
+        "nama" : "Kerupuk",
+        "jenis": "tambahan",
+        "jumlah1": 20,
+        "hargabeli":1250, 
+        "sisa" : 0,
+        "untung" : 0
+    },
+    5 : {
+        "kode" : 500,
+        "nama" : "Ubi",
+        "jenis": "Pokok",
+        "jumlah1": 15,
+        "hargabeli":2000, 
+        "sisa" : 0,
+        "untung" : 0
+    },
+    6 : {
+        "kode" : 600,
+        "nama" : "Wortel",
+        "jenis": "Sayuran",
+        "jumlah1": 20,
+        "hargabeli":4000, 
+        "sisa" : 0,
+        "untung" : 0
+    }
+        }
+print("Data Dagangan")
+for x in barang :
+  print(barang[x])
 
-# #Tugas 2
-# '''
-# print("Nama\t: Cetta Maulana Andhika\nNIM\t: 1103213119\nKelas\t: TK-45-04\n")
-# nomor = input("Masukan dua nomor terakhir nim anda :")
-# nomor = (float(nomor)*float(nomor))*3.14
-# print("Hasil =",nomor,)'''
+jual = {
+        1 : {
+        "tanggal": 101020,
+        "kode" : 200,
+        "jumlah1": 1,
+        "hargajual":1200, 
+        "diskon" : 0.05
+    },
+        2 : {
+        "tanggal": 101020,
+        "kode" : 300,
+        "jumlah1": 2,
+        "hargajual":12000, 
+        "diskon" : 0.10
+    },  3 : {
+        "tanggal": 101020,
+        "kode" : 200,
+        "jumlah1": 1,
+        "hargajual":900, 
+        "diskon" : 0
+    },  4 : {
+        "tanggal": 101020,
+        "kode" : 100,
+        "jumlah1": 1,
+        "hargajual":2500, 
+        "diskon" : 0
+    },    "5" : {
+        "tanggal": 101020,
+        "kode" : 600,
+        "jumlah1": 2,
+        "hargajual":5000, 
+        "diskon" : 0.05
+    },  6 : {
+        "tanggal": 121020,
+        "kode" : 400,
+        "jumlah1": 2,
+        "hargajual":1500, 
+        "diskon" : 0
+    },  7 : {
+        "tanggal": 121020,
+        "kode" : 200,
+        "jumlah1": 3,
+        "hargajual":1500, 
+        "diskon" : 0
+    },
+        8 : {
+        "tanggal": 131020,
+        "kode" : 100,
+        "jumlah1": 1,
+        "hargajual":2500, 
+        "diskon" : 0.25
+    },
+        9 : {
+        "tanggal": 131020,
+        "kode" : 200,
+        "jumlah1": 3,
+        "hargajual":1500, 
+        "diskon" : 0.10
+    },
+        10 : {
+        "tanggal": 131020,
+        "kode" : 300,
+        "jumlah1": 1,
+        "hargajual":15000, 
+        "diskon" : 0.10
+    },
+     
+}
+print("")
+print("Data Transaksi") 
+for x in jual :
+  print(jual[x])
 
-# #Tugas 3
-# '''
-# nim = input("Masukan NIM Anda :")
-# nama = input("Masukan Nama Anda :")
-# Alamat = input("Masukan alamat anda :")
-
-# uts = float(input("Masukan Nilai UTS :"))
-# uas = float(input("Masukan Nilai UAS :"))
-
-# rata=float((uts+uas)/2)
-# if(rata>60) :
-#     print("Nama\t: ",nama,"\nNIM\t: ",nim,"\nAlamat\t: ",Alamat,"\nLulus dengan nilai rata rata ",rata)
-# else : 
-#     print("Nama\t: ",nama,"\nNIM\t: ",nim,"\nAlamat\t: ",Alamat,"\ntidak Lulus dengan nilai rata rata ",rata)'''
-
-# #Tugas 4
-
-# jam = (int(input("Jam\t:")))
-
-# if jam < 3 :
-#     harga=2000
-# else :
-#     harga=((jam-2)*2500)+6000
-# print("biaya parkir\t:",harga)
-
-# #tugas mgg 2 1
-
-# umur=(int(input("Usia\t:")))
-
-# if umur <5 :
-#     print("Balita")
-# elif umur >5 and umur <=12 :
-#     print("Anak-Anak")
-# elif umur >12 and umur <18 :
-#     print("Remaja")
-# else :
-#     print("Dewasa")
-
-# #tugas 1
-
-# bil= int(input("Masukan angka\t:"))
-# jumlah=bil
-# for i in range(1,bil) :
-#     jumlah=jumlah*(bil-i)
-
-# print(jumlah,"\n")
-# #tugas 2
-
-# namelist = ["Andi","Udin","Ujang","Alam","asep"]
-
-# for i in namelist :
-#     if i[0]=='a' or i[0]=='A' :
-#         print(i)
-
-# #tugas 3
-
-# i=100
-# print("\n")
-# while i > 0 :
-    
-#     if i % 2 == 0 :
-#         i-=1
-#         print("percobaan Ke-",i)
-#     else :
-#         i-=20
-#         if i<0 : break
-#         print("percobaan Ke-",i)
-
-list1 = ["apel", "pisang", "ceri", "jeruk", "kiwi", "melon", "mangga"]
-list2=[]
-for i in range(len(list1)):
-  list2.append([i,list1[i]])
-print(list2)
+print("")
+print(">>>Menghitung Jumlah Sisa Dan Untung<<<")
+for y in barang :
+  barang[y]["sisa"] = barang[y]["jumlah1"]
+  print("Kelompok Barang : ", barang[y]["kode"],barang[y]["nama"])
+  for z in jual:
+    if barang[y]["kode"] == jual[z]["kode"]:
+      barang[y]["sisa"] = barang[y]["jumlah1"] - jual[z]["jumlah1"]
+      barang[y]["jumlah1"] = barang[y]["sisa"]
+      barang[y]["untung"] = barang[y]["untung"] + (jual[z]["hargajual"]*(1-jual[z]["diskon"])-barang[y]["hargabeli"])*jual[z]["jumlah1"]
+      print("Tanggal", jual[z]["tanggal"],"Harga Asli", jual[z]["hargajual"],"Sisa", barang[y]["sisa"], "Untung", barang[y]["untung"] )    
