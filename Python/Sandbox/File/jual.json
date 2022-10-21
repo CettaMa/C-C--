@@ -1,0 +1,72 @@
+{
+    "barang4": {
+        "tanggal": 101020,
+        "kode": 100,
+        "jumlah": 1,
+        "harga": 2500,
+        "diskon": 0
+    },
+    "barang8": {
+        "tanggal": 131020,
+        "kode": 100,
+        "jumlah": 1,
+        "harga": 2500,
+        "diskon": 25
+    },
+    "barang1": {
+        "tanggal": 101020,
+        "kode": 200,
+        "jumlah": 1,
+        "harga": 1200,
+        "diskon": 5
+    },
+    "barang3": {
+        "tanggal": 101020,
+        "kode": 200,
+        "jumlah": 1,
+        "harga": 900,
+        "diskon": 0
+    },
+    "barang7": {
+        "tanggal": 121020,
+        "kode": 200,
+        "jumlah": 3,
+        "harga": 1500,
+        "diskon": 0
+    },
+    "barang9": {
+        "tanggal": 131020,
+        "kode": 200,
+        "jumlah": 3,
+        "harga": 1500,
+        "diskon": 10
+    },
+    "barang2": {
+        "tanggal": 101020,
+        "kode": 300,
+        "jumlah": 2,
+        "harga": 12000,
+        "diskon": 10
+    },
+    "barang10": {
+        "tanggal": 131020,
+        "kode": 300,
+        "jumlah": 1,
+        "harga": 15000,
+        "diskon": 10
+    },
+    "barang6": {
+        "tanggal": 121020,
+        "kode": 400,
+        "jumlah": 2,
+        "harga": 1500,
+        "diskon": 0
+    },
+    "barang5": {
+        "tanggal": 101020,
+        "kode": 600,
+        "jumlah": 2,
+        "harga": 5000,
+        "diskon": 5
+    }
+}

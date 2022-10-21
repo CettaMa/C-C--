@@ -1,3 +1,5 @@
+import json
+
 dict1 = {
     1 : {"kode" : 100 ,"nama" : "bayam","jenis" : "sayuran","jumlah" : 15,"Hargabeli" : 1500,"sisa" : 0,"untung" :0},
     2 : {"kode" : 200 ,"nama" : "kangkung","jenis" : "sayuran","jumlah" : 10,"Hargabeli" : 1000,"sisa" : 0,"untung" : 0},
@@ -6,6 +8,10 @@ dict1 = {
     5 : {"kode" : 500 ,"nama" : "ubi","jenis" : "pokok","jumlah" : 15,"Hargabeli" : 2000,"sisa" : 0,"untung" : 0},
     6 : {"kode" : 600 ,"nama" : "wortel","jenis" : "sayuran","jumlah" : 20,"Hargabeli" : 4000,"sisa" : 0,"untung" : 0}
 }
+
+#isibarang 
+with open("Python/Sandbox/File/barang.json","w") as file1:
+    json.dump(dict1,file1,indent=4)
 
 dict2 = {
     "barang1" : {"tanggal" : 101020,"kode" : 200,"jumlah" : 1,"harga" : 1200,"diskon" : 5},
@@ -20,16 +26,27 @@ dict2 = {
     "barang10" : {"tanggal" : 131020,"kode" : 300,"jumlah" : 1,"harga" : 15000,"diskon" : 10}
 }
 
-lap=(sorted(dict2.items(), key=lambda item: item[1]["kode"]))
-sorted_dict2=dict(lap)
+#isijual
+with open("Python/Sandbox/File/jual.json","w") as file2:
+    json.dump(dict2,file2,indent=4)
 
+#urut
+with open("Python/Sandbox/File/jual.json","r") as file2:
+    filejual=json.load(file2)
 
+dict(filejual)
+
+lap=(sorted(filejual.items(), key=lambda item: item[1]["kode"]))
+filejual=dict(lap)
+
+with open("Python/Sandbox/File/jual.json","w") as file2:
+    json.dump(filejual,file2,indent=4)
 
 #nomor.D
 for barang1,keys1 in dict1.items():
     dict1[barang1]["sisa"]= dict1[barang1]["jumlah"]
     untung=0
-    for barang2,keys2 in sorted_dict2.items():
+    for barang2,keys2 in filejual.items():
         if keys1["kode"]==keys2["kode"] :
             # print("ketemu!!",keys1["kode"])
             sisa=keys1["sisa"]-keys2["jumlah"]
@@ -44,6 +61,13 @@ for barang1,keys1 in dict1.items():
             continue
     dict1[barang1]["untung"]=untung
 
+with open("Python/Sandbox/File/barang.json","w") as file1:
+    json.dump(dict1,file1,indent=4)
+
+#Menampilkan data dari file dan mengurutkan berdasarkan jenis
+with open("Python/Sandbox/File/barang.json","r") as file1:
+    dict1=json.load(file1)
+
 print("Data Dagangan")
 for keys,item in dict1.items() :
     print(item["kode"],item["nama"],"\t",item["jenis"],"    \t",item["jumlah"],"\t",item["Hargabeli"],"\t",item["sisa"],"\t",item["untung"])
@@ -52,6 +76,13 @@ dict1=dict(lap)
 print("\nSetelah diurutkan Berdasarkan Jenis :")
 for keys,item in dict1.items() :
     print(item["kode"],item["nama"],"\t",item["jenis"],"    \t",item["jumlah"],"\t",item["Hargabeli"],"\t",item["sisa"],"\t",item["untung"])
+
+with open("Python/Sandbox/File/barang.json","w") as file1:
+    json.dump(dict1,file1,indent=4)
+
+#menampilkan total untung tiap jenis
+with open("Python/Sandbox/File/barang.json","r") as file1:
+    dict1=json.load(file1)
 
 untungpokok=0
 untungsayuran=0

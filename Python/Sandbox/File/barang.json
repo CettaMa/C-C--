@@ -1,0 +1,56 @@
+{
+    "3": {
+        "kode": 300,
+        "nama": "beras",
+        "jenis": "pokok",
+        "jumlah": 25,
+        "Hargabeli": 10000,
+        "sisa": 22,
+        "untung": 4300.0
+    },
+    "5": {
+        "kode": 500,
+        "nama": "ubi",
+        "jenis": "pokok",
+        "jumlah": 15,
+        "Hargabeli": 2000,
+        "sisa": 15,
+        "untung": 0
+    },
+    "1": {
+        "kode": 100,
+        "nama": "bayam",
+        "jenis": "sayuran",
+        "jumlah": 15,
+        "Hargabeli": 1500,
+        "sisa": 13,
+        "untung": 1375.0
+    },
+    "2": {
+        "kode": 200,
+        "nama": "kangkung",
+        "jenis": "sayuran",
+        "jumlah": 10,
+        "Hargabeli": 1000,
+        "sisa": 2,
+        "untung": 890.0
+    },
+    "6": {
+        "kode": 600,
+        "nama": "wortel",
+        "jenis": "sayuran",
+        "jumlah": 20,
+        "Hargabeli": 4000,
+        "sisa": 18,
+        "untung": 750.0
+    },
+    "4": {
+        "kode": 400,
+        "nama": "kerupuk",
+        "jenis": "tambahan",
+        "jumlah": 20,
+        "Hargabeli": 1250,
+        "sisa": 18,
+        "untung": 250
+    }
+}
