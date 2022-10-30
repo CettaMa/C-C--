@@ -1,4 +1,14 @@
 {
+    "7": {
+        "kode": 700,
+        "nama": "tempecetta",
+        "jenis": "makanan",
+        "jumlah": 19,
+        "Hargabeli": 3119,
+        "sisa": 19,
+        "untung": 0,
+        "aktif": "y"
+    },
     "3": {
         "kode": 300,
         "nama": "beras",
@@ -6,7 +16,8 @@
         "jumlah": 25,
         "Hargabeli": 10000,
         "sisa": 22,
-        "untung": 4300.0
+        "untung": 4300.0,
+        "aktif": "y"
     },
     "5": {
         "kode": 500,
@@ -24,7 +35,8 @@
         "jumlah": 15,
         "Hargabeli": 1500,
         "sisa": 13,
-        "untung": 1375.0
+        "untung": 1375.0,
+        "aktif": "y"
     },
     "2": {
         "kode": 200,
@@ -33,7 +45,8 @@
         "jumlah": 10,
         "Hargabeli": 1000,
         "sisa": 2,
-        "untung": 890.0
+        "untung": 890.0,
+        "aktif": "y"
     },
     "6": {
         "kode": 600,
@@ -42,7 +55,8 @@
         "jumlah": 20,
         "Hargabeli": 4000,
         "sisa": 18,
-        "untung": 750.0
+        "untung": 750.0,
+        "aktif": "y"
     },
     "4": {
         "kode": 400,
@@ -51,6 +65,7 @@
         "jumlah": 20,
         "Hargabeli": 1250,
         "sisa": 18,
-        "untung": 250
+        "untung": 250,
+        "aktif": "y"
     }
 }

@@ -26,6 +26,32 @@ dict2 = {
     "barang10" : {"tanggal" : 131020,"kode" : 300,"jumlah" : 1,"harga" : 15000,"diskon" : 10}
 }
 
+def tambahbar(kode,nama,jenis,jumlah,hargabeli) :
+    dict1.update({7 : {"kode" : kode ,"nama" : nama,"jenis" : jenis,"jumlah" : jumlah,"Hargabeli" : hargabeli,"sisa" : 0,"untung" : 0}})
+
+tambahbar(700,"tempe","pokok",19,3119)
+
+def ubah(kode,nama,jenis) :
+    for i in dict1 :
+        if dict1[i]["kode"]==kode:
+            x=i
+
+    dict1[x]["nama"]=nama
+    dict1[x]["jenis"]=jenis
+
+ubah(700,"tempecetta","makanan")
+
+def revisi() :
+    for x in dict1:
+        if dict1[x]["kode"]==500:
+            pass
+        else :
+            dict1[x]["aktif"]='y'
+    for x in dict1.items() :
+        print(x)
+    
+revisi()
+
 #isijual
 with open("Python/Sandbox/File/jual.json","w") as file2:
     json.dump(dict2,file2,indent=4)
