@@ -1,0 +1,5 @@
+Laporan Keuntungan
+Pokok :5100.0
+Sayuran :5465.0
+Tambahan :500
+Total Untung :11065.0
