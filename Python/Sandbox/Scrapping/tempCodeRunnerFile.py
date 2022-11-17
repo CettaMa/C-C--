@@ -1,0 +1,1 @@
+driver.execute_script("window.history.go(-1)")

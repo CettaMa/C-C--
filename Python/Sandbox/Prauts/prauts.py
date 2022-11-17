@@ -84,7 +84,7 @@ def hitungip():
                 elif isi2["indeks"]=="D":
                     jmlbobot+=2*isi2["sks"]
                 elif isi2["indeks"]=="E":
-                    jmlbobot+=1*isi2["sks"]
+                    jmlbobot+=isi2["sks"]
             else :
                 continue
         ipk=jmlbobot/jmlsks
@@ -100,8 +100,11 @@ def urut(mode):
         lap=(sorted(filenilai.items(),key=lambda item: item[1]["nim"]))
         nil=dict(lap)
         print("\nMengurutkan Berdasarkan NIM (Acending)")
-        tampilkan(2)
-        simpandict(2)
+        for x,y in nil.items():
+            print(y["nim"],"\t",y["namamk"],"    \t",y["sks"],"\t",y["uts"],y["uas"],y["indeks"])
+
+        with open("Python/Sandbox/Prauts/datanilai.json","w") as filenil: 
+            json.dump(nil,filenil)  
 
     elif mode==2:
         file= open("Python/Sandbox/Prauts/datanilai.json","r")
@@ -109,42 +112,57 @@ def urut(mode):
         lap=(sorted(filenilai.items(),reverse=True, key=lambda item: item[1]["nim"]))
         nil=dict(lap)
         print("\nMengurutkan Berdasarkan NIM (Decending)")
-        tampilkan(2)
-        simpandict(2)
+        for x,y in nil.items():
+            print(y["nim"],"\t",y["namamk"],"    \t",y["sks"],"\t",y["uts"],y["uas"],y["indeks"])
+
+        with open("Python/Sandbox/Prauts/datanilai.json","w") as filenil: 
+            json.dump(nil,filenil)  
 
     elif mode==3:
-        file= open("Python/Sandbox/Prauts/datamhs.json","r")
-        filemhs=json.load(file)
-        lap=(sorted(filemhs.items(), key=lambda item: item[1]["ipk"]))
-        mahasiswa=dict(lap)
-        print("\nMengurutkan Berdasarkan IPK")
-        tampilkan(1)
-        simpandict(1)
+        with open("Python/Sandbox/Prauts/datamhs.json","r") as filemhs:
+            mahasiswa=json.load(filemhs)
+            lap=(sorted(mahasiswa.items(),reverse=True, key=lambda x: x[1]['ipk']))
+            mahasiswa=dict(lap)
+            print("\nMengurutkan Berdasarkan IPK")
+            for x,y in mahasiswa.items():
+                print(y["nim"],"\t",y["nama"],"    \t","%.2f" %y["ipk"],"\t",y["SKSLulus"])
+        with open("Python/Sandbox/Prauts/datamhs.json","w") as filemhs: 
+            json.dump(mahasiswa,filemhs)  
+        
 
     elif mode==4:
         file= open("Python/Sandbox/Prauts/datamhs.json","r")
         filemhs=json.load(file)
-        lap=(sorted(filemhs.items(),reverse=True, key=lambda item: item[1]["SKSLulus"]))
+        lap=(sorted(filemhs.items(), key=lambda item:item[1]["SKSLulus"]))
         mahasiswa=dict(lap)
         print("\nMengurutkan Berdasarkan SKS Lulus")
-        tampilkan(1)
-        simpandict(1)
+        for x,y in mahasiswa.items():
+            print(y["nim"],"\t",y["nama"],"    \t","%.2f" %y["ipk"],"\t",y["SKSLulus"])
+        
+        with open("Python/Sandbox/Prauts/datamhs.json","w") as filemhs: 
+            json.dump(mahasiswa,filemhs)  
 
 def peringkat():
     urut(3)
+    file= open("Python/Sandbox/Prauts/datamhs.json","r")
+    mahasiswa=json.load(file)
     print("Peringkat Mahasiswa\t:")
-    for i in range(1,4):
-        print(i,"\t",mahasiswa[i]["nim"],"\t",mahasiswa[i]["nama"],"    \t","%.2f" %mahasiswa[i]["ipk"])
+    i=1
+    for x,y in mahasiswa.items():
+        print(x,"\t",y["nim"],"\t",y["nama"],"    \t","%.2f" %y["ipk"])
+        i+=1
+        if i>3:
+            break
 
 def tampilkan(mode):
     if mode == 1:
         loaddict(1)
-        for x in mahasiswa:
-            print(mahasiswa[x]["nim"],"\t",mahasiswa[x]["nama"],"   \t","%.2f"%mahasiswa[x]["ipk"],"\t",mahasiswa[x]["SKSLulus"])
+        for x,y in mahasiswa.items():
+            print(y["nim"],"\t",y["nama"],"   \t","%.2f"%y["ipk"],"\t",y["SKSLulus"])
     elif mode == 2:
         loaddict(2)
-        for x in nil:
-            print(nil[x]["nim"],"\t",nil[x]["namamk"],"   \t",nil[x]["sks"],"\t",nil[x]["uts"],"\t",nil[x]["uas"],"\t",nil[x]["indeks"])
+        for x,y in nil.items():
+            print(y["nim"],"\t",y["namamk"],"   \t",y["sks"],"\t",y["uts"],"\t",y["uas"],"\t",y["indeks"])
 
 buatindeks()
 hitungip()

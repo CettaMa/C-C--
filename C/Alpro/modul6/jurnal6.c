@@ -1,30 +1,35 @@
-#include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+#include <stdio.h>
+#include <string.h>
 
-void imt (float berat, float tinggi){
-    float imt;
-    tinggi=tinggi*0.01;
-    tinggi=(tinggi*tinggi);
-    imt=berat/tinggi;
-    if (imt<18.5)
+
+int main() {
+    int n,i,pass,temp; //mendeklarasikan i
+    printf("Masukan jumlah data :");
+    scanf("%d",&n); //menambah "&"
+
+    int data[n]; //diubah agar mendeklarasikan array
+    for (i = 0; i < n; i++)
     {
-        printf("IMT :%.2f\n",imt);
-        printf("Kamu terlalu kurus!\n");
-    } else if (imt>=18.5 && imt<25){
-        printf("IMT :%.2f\n",imt);
-        printf("Kamu IDEAL\n");
-    }else {
-        printf("IMT :%.2f\n",imt);
-        printf("Kamu Kegendutan!\nJaga pola Makannya!\n");
+        printf("data ke-%d = ",i+1);
+        scanf("%d",&data[i]); //mengganti "%s" dengan "%d"
     }
     
-}
-int main(){
-    float bb,tb;
-    printf("Masukan Berat badan anda\t:");
-    scanf("%f",&bb);
-    printf("Masukan tinggi badan anda\t:");
-    scanf("%f",&tb);
-    imt(bb,tb);
+    for (pass = 1; pass < n; pass++)
+    {
+        for (i = 0; i < n-1; i++)
+        {
+            if (data[i]>data[i+1]){
+            temp=data[i];
+            data[i]=data[i+1];
+            data[i+1]=temp;
+            } //memperbaiki algoritma sesuai dengan algoritma bubble sort
+        }
+    }
+    printf("\ndata setelah diurutkan :\n");
+    for (i = 0; i < n; i++)
+    {
+        printf("data ke-%d = %d\n",i+1,data[i]);
+    }
+    
 }
