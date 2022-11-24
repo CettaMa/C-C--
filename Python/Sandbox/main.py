@@ -1,56 +1,279 @@
-#Dict Barang
-DataBrg={}
-DataBrg[100]={'nama': 'Bayam','jenis':'sayuran','jumlaha':15,'hargabeli':1500,'sisa':0,'untung':0}
-DataBrg[200]={'nama': 'kangkung','jenis':'sayuran','jumlaha':10,'hargabeli':1000,'sisa':0,'untung':0}
-DataBrg[300]={'nama': 'Beras','jenis':'pokok','jumlaha':25,'hargabeli':10000,'sisa':0,'untung':0}
-DataBrg[400]={'nama': 'Kerupuk','jenis':'tambahan','jumlaha':20,'hargabeli':1250,'sisa':0,'untung':0}
-DataBrg[500]={'nama': 'Ubi','jenis':'pokok','jumlaha':15,'hargabeli':2000,'sisa':0,'untung':0}
-DataBrg[600]={'kode':600,'nama': 'Wortel','jenis':'sayuran','jumlaha':20,'hargabeli':4000,'sisa':0,'untung':0}
+import json
+print ("Dibuat Oleh :")
+print ("Nama : Muhammad Musyaffakul Harisna")
+print ("NIM : 1103213131")
+print ("Kelas : TK-45-04")
 
-#Dict Jual
-DataJual={}
-DataJual[1]={'tanggal': '10-10-20','kode':200,'jumlahb': 1,'harga':1200,'diskon':5}
-DataJual[2]={'tanggal': '10-10-20','kode':300,'jumlahb': 2,'harga':12000,'diskon':10}
-DataJual[3]={'tanggal': '10-10-20','kode':200,'jumlahb': 1,'harga':900,'diskon':0}
-DataJual[4]={'tanggal': '10-10-20','kode':100,'jumlahb': 1,'harga':2500,'diskon':0}
-DataJual[5]={'tanggal': '10-10-20','kode':600,'jumlahb': 2,'harga':5000,'diskon':5}
-DataJual[6]={'tanggal': '12-10-20','kode':400,'jumlahb': 2,'harga':1500,'diskon':0}
-DataJual[7]={'tanggal': '12-10-20','kode':200,'jumlahb': 3,'harga':1500,'diskon':0}
-DataJual[8]={'tanggal': '13-10-20','kode':100,'jumlahb': 1,'harga':2500,'diskon':25}
-DataJual[9]={'tanggal': '13-10-20','kode':200,'jumlahb': 3,'harga':1500,'diskon':10}
-DataJual[10]={'tanggal': '13-10-20','kode':300,'jumlahb': 2,'harga':15000,'diskon':10}
+Isikcg = {
+    100 : {
+        "Nama": "Manis",
+        "Jenis": "Kampung",
+        "Mutu": int(1),
+        "NilTotal": 0,
+        "Harga": 0
+    },
+    200 : {
+        "Nama": "Wolfgang",
+        "Jenis": "Persia",
+        "Mutu": int(2),
+        "NilTotal": 0,
+        "Harga": 0
+    },
+    300 : {
+        "Nama": "Alexander",
+        "Jenis": "Angora",
+        "Mutu": int(2),
+        "NilTotal": 0,
+        "Harga": 0
+    },
+    400 : {
+        "Nama": "Borneo",
+        "Jenis": "Angora",
+        "Mutu": int(1),
+        "NilTotal": 0,
+        "Harga": 0
+    },
+    500 : {
+        "Nama": "Pussycat",
+        "Jenis": "Angora",
+        "Mutu": int(1),
+        "NilTotal": 0,
+        "Harga": 0
+    }
+}
+dfilekcg=json.dumps(Isikcg)
+with open("kucing.json","w") as wfilekcg:
+    wfilekcg.write(dfilekcg)
 
-print("\n\t\t\t === Data Dagangan ===\n")
-print(f'{"kode":<8}{"Nama":<10}{"Jenis":<10}{"Jumlah":<10}{"Harga Beli":<15}{"Sisa":<10}{"Untung"}')
-for x,y in DataBrg.items() :
-    print(f"{x:<8}{y['nama']:<10}{y['jenis']:<10}{y['jumlaha']:<10}{y['hargabeli']:<15}{y['sisa']:<10}{y['untung']}")
-print("\n\t  === Data Transaksi ===\n")
-print(f'{"Tanggal":<10}{"Kode":<10}{"Jumlah":<10}{"Harga Jual":<15}{"Diskon":}')
-for x,y in DataJual.items() :
-    print(f"{y['tanggal']:<10}{y['kode']:<10}{y['jumlahb']:<10}{y['harga']:<15}{y['diskon']}")
 
-print("\nMenghitung data sisa dan untung\n")
-totaluntung=0
-untung=0
-for x,y in DataBrg.items():
-    print("Kelompok Barang: ",x,y['nama'])
-    for a,b in DataJual.items():
-        if x == b['kode']:
-            y['sisa']=y['jumlaha']-b['jumlahb']
-            y['jumlaha']=y['sisa']
-            totaluntung=y['untung']
-            y['untung'] = float(b['harga']*((100-b['diskon'])/100)-b['jumlahb'])
-            totaluntung+=y['untung']
-            print("Tanggal",b['tanggal'],"Harga Jual",b['harga'],"sisa",y['sisa'],"Untung",y['untung'])
+Isinilai= {
+    1: {
+        "Nama": "Manis",
+        "Aspek": "Bulu",
+        "Kualitas": int(1),
+        "Nilai": int(70),
+        "Index": ""
+    },
+    2: {
+        "Nama": "Wolfgang",
+        "Aspek": "Bulu",
+        "Kualitas": int(3),
+        "Nilai": int(70),
+        "Index": ""
+    },
+    3: {
+        "Nama": "Alexander",
+        "Aspek": "Bulu",
+        "Kualitas": int(2),
+        "Nilai": int(100),
+        "Index": ""
+    },
+    4: {
+        "Nama": "Borneo",
+        "Aspek": "Bulu",
+        "Kualitas": int(3),
+        "Nilai": int(30),
+        "Index": ""
+    },
+    5: {
+        "Nama": "Pussycat",
+        "Aspek": "Bulu",
+        "Kualitas": int(2),
+        "Nilai": int(60),
+        "Index": ""
+    },
+    6: {
+        "Nama": "Manis",
+        "Aspek": "Badan",
+        "Kualitas": int(1),
+        "Nilai": int(80),
+        "Index": ""
+    },
+    7: {
+        "Nama": "Wolfgang",
+        "Aspek": "Badan",
+        "Kualitas": int(2),
+        "Nilai": int(90),
+        "Index": ""
+    },
+    8: {
+        "Nama": "Alexanders",
+        "Aspek": "Badan",
+        "Kualitas": int(2),
+        "Nilai": int(100),
+        "Index": ""
+    },
+    9: {
+        "Nama": "Manis",
+        "Aspek": "Sehat",
+        "Kualitas": int(1),
+        "Nilai": int(75),
+        "Index": ""
+    },
+    10: {
+        "Nama": "Wolfgang",
+        "Aspek": "Sehat",
+        "Kualitas": int(3),
+        "Nilai": int(70),
+        "Index": ""
+    },
+    11: {
+        "Nama": "Alexander",
+        "Aspek": "Sehat",
+        "Kualitas": int(2),
+        "Nilai": int(100),
+        "Index": ""
+    },
+    12: {
+        "Nama": "Borneo",
+        "Aspek": "Sehat",
+        "Kualitas": int(3),
+        "Nilai": int(30),
+        "Index": ""
+    },
+}
+dfilenilai=json.dumps(Isinilai)
+with open("nilai.json","w") as wfilenilai:
+    wfilenilai.write(dfilenilai)
 
-print("\n\t\t\t === Data Dagangan ===\n")
-print(f'{"kode":<8}{"Nama":<10}{"Jenis":<10}{"Jumlah":<10}{"Harga Beli":<15}{"Sisa":<10}{"Untung"}')
-for x,y in DataBrg.items() :
-    print(f"{x:<8}{y['nama']:<10}{y['jenis']:<10}{y['jumlaha']:<10}{y['hargabeli']:<15}{y['sisa']:<10}{y['untung']}")
-urutdatabrg=(sorted(DataBrg.items(),key=lambda t:t[1]['jenis']))
-DataBrg=dict(urutdatabrg)
-print("\nMengurutkan data Isibarang berdasarkan Jenis")
-print("\n\t\t\t === Data Dagangan ===\n")
-print(f'{"kode":<8}{"Nama":<10}{"Jenis":<10}{"Jumlah":<10}{"Harga Beli":<15}{"Sisa":<10}{"Untung"}')
-for x,y in DataBrg.items() :
-    print(f"{x:<8}{y['nama']:<10}{y['jenis']:<10}{y['jumlaha']:<10}{y['hargabeli']:<15}{y['sisa']:<10}{y['untung']}")
+def Tampil():
+    print ("Membaca dan Menampilkan File Kucing")
+    with open ("kucing.json","r") as rfilekcg:
+        bcfilekcg=rfilekcg.read()
+        lfilekcg=json.loads(bcfilekcg)
+    for p,q in lfilekcg.items():
+        print(q)
+    print ("\nMembaca dan Menampilkan File Nilai")
+    with open ("nilai.json","r") as rfilenilai:
+        bcfilenilai=rfilenilai.read()
+        lfilenilai=json.loads(bcfilenilai)
+    for p,q in lfilenilai.items():
+        print(q)
+tampil:Tampil()
+print("\n")
+
+def BuatIndex():
+    dfilenilai=json.dumps(Isinilai)
+    with open("nilai.json","w") as wfilenilai:
+        for p,q in Isinilai.items():
+            if (q["Kualitas"])==1:
+                NI=100 * (q["Nilai"])/100
+                if NI >= 80:
+                    q["Index"]="A"
+                elif 70 <= NI < 80:
+                    q["Index"]="B"
+                elif 55 <= NI < 70:
+                    q["Index"]="C"
+                elif 40 <= NI < 55:
+                    q["Index"]="D"
+                elif NI < 40:
+                    q["Index"]="E"
+            elif (q["Kualitas"])==2:
+                NI=80 * (q["Nilai"])/100
+                if NI >= 80:
+                    q["Index"]="A"
+                elif 70 <= NI < 80:
+                    q["Index"]="B"
+                elif 55 <= NI < 70:
+                    q["Index"]="C"
+                elif 40 <= NI < 55:
+                    q["Index"]="D"
+                elif NI < 40:
+                    q["Index"]="E"
+            elif (q["Kualitas"])==3:
+                NI=100 * (q["Nilai"])/100
+                if NI >= 80:
+                    q["Index"]="A"
+                elif 70 <= NI < 80:
+                    q["Index"]="B"
+                elif 55 <= NI < 70:
+                    q["Index"]="C"
+                elif 40 <= NI < 55:
+                    q["Index"]="D"
+                elif NI < 40:
+                    q["Index"]="E"
+        json.dump(Isinilai,wfilenilai)
+    with open ("nilai.json","r") as rfilenilai:
+        bcfilenilai=rfilenilai.read()
+        lfilenilai=json.loads(bcfilenilai)
+    for p,q in lfilenilai.items():
+        print(q)
+index:BuatIndex()
+
+def HitungNT():
+    dfilekcg=json.dumps(Isikcg)
+    with open("kucing.json","w") as wfilekcg:
+        for a,b in Isikcg.items():
+            for p,q in Isinilai.items():
+                if (q["Nama"])=="Manis":
+                    if (q["Index"])=="A":
+                        if (q["Aspek"])=="Bulu":
+                            aspek=3
+                            NilAs=4*3
+                        elif (q["Aspek"])=="Badan":
+                            aspek=4
+                            NilAs=4*4
+                        elif (q["Aspek"])=="Sehat":
+                            aspek=5
+                            NilAs=4*5
+                    elif (q["Index"])=="B":
+                        if (q["Aspek"])=="Bulu":
+                            aspek=3
+                            NilAs=3*3
+                        elif (q["Aspek"])=="Badan":
+                            aspek=4
+                            NilAs=3*4
+                        elif (q["Aspek"])=="Sehat":
+                            aspek=5
+                            NilAs=3*5
+                    elif (q["Index"])=="C":
+                        if (q["Aspek"])=="Bulu":
+                            aspek=3
+                            NilAs=2*3
+                        elif (q["Aspek"])=="Badan":
+                            aspek=4
+                            NilAs=2*4
+                        elif (q["Aspek"])=="Sehat":
+                            NilAs=2*5
+                    elif (q["Index"])=="D":
+                        if (q["Aspek"])=="Bulu":
+                            aspek=3
+                            NilAs=1*3
+                        elif (q["Aspek"])=="Badan":
+                            aspek=4
+                            NilAs=1*4
+                        elif (q["Aspek"])=="Sehat":
+                            aspek=5
+                            NilAs=1*5
+                    elif (q["Index"])=="E":
+                        if (q["Aspek"])=="Bulu":
+                            aspek=3
+                            NilAs=0*3
+                        elif (q["Aspek"])=="Badan":
+                            aspek=4
+                            NilAs=0*4
+                        elif (q["Aspek"])=="Sehat":
+                            aspek=5
+                            NilAs=0*5
+                    for p,q in Isinilai.items():
+                        NilaiAkhir = NilAs/aspek
+                    
+HitungNT()
+
+if aspek==bulu:
+    aspek=3
+elif aspek==badan:
+    aspek=4
+elif aspek==sehat:
+    aspek=5
+
+if indeks==A:
+    aspek=aspek*4
+elif indeks==B:
+    aspek=aspek*3
+elif indeks==c:
+    aspek=aspek*2
+elif indeks==d:
+    aspek=aspek*1
+elif indeks==e:
+    pass

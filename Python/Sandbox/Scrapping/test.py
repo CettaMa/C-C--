@@ -8,6 +8,8 @@ from selenium.webdriver.common.keys import Keys
 
 pointer="//*[@id=\"content\"]/div/div[1]/div/div[1]/article["
 
+artikel={}
+
 def parser_para():
 
     for page in range(1,6):
@@ -17,6 +19,12 @@ def parser_para():
         soup= BeautifulSoup(req.content,'html.parser')
         s = soup.find('div',class_='detail_text')
         content = s.find_all('p')
+        artikel[page]={"judul": soup.title.text}
+        isi=""
+        for line in content:
+            isi+=line.text
+        artikel[page]={"isi": isi}
+        
         with open("Python/Sandbox/Scrapping/scrap.txt","a+") as file:
             file.write("\t")
             file.write(soup.title.text)
@@ -24,8 +32,9 @@ def parser_para():
             for line in content:
                 file.write(line.text)
                 file.write("\n")
-                print(line.text)
             file.write("\n")
+
+        
         driver.get(main_page_oto)
     
 url="https://www.cnnindonesia.com/"
@@ -39,3 +48,6 @@ otomotif.click()
 main_page_oto=driver.current_url
 
 parser_para()
+
+for line in artikel.items():
+    print(line)
