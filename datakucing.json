@@ -1,0 +1,32 @@
+{
+    "Manis": {
+        "jenis": "Kampung",
+        "mutu": 1,
+        "nilakhir": 3.3333333333333335,
+        "harga": 833333.3333333334
+    },
+    "Wolfgang": {
+        "jenis": "Persia",
+        "mutu": 2,
+        "nilakhir": 1.6666666666666667,
+        "harga": 1000000.0
+    },
+    "Alexander": {
+        "jenis": "Angora",
+        "mutu": 2,
+        "nilakhir": 4.0,
+        "harga": 2000000.0
+    },
+    "Borneo": {
+        "jenis": "Angora",
+        "mutu": 1,
+        "nilakhir": 0.0,
+        "harga": 0.0
+    },
+    "Pussycat": {
+        "jenis": "Persia",
+        "mutu": 1,
+        "nilakhir": 1.0,
+        "harga": 600000.0
+    }
+}

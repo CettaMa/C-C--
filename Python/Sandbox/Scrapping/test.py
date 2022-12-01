@@ -18,22 +18,24 @@ def parser_para():
         req=requests.get(driver.current_url)
         soup= BeautifulSoup(req.content,'html.parser')
         s = soup.find('div',class_='detail_text')
-        content = s.find_all('p')
-        artikel[page]={"judul": soup.title.text}
-        isi=""
-        for line in content:
-            isi+=line.text
-        artikel[page]={"isi": isi}
-        
-        with open("Python/Sandbox/Scrapping/scrap.txt","a+") as file:
-            file.write("\t")
-            file.write(soup.title.text)
-            file.write("\n")
+        if s == None:
+            pass
+        else :
+            content = s.find_all('p')
+            artikel[page]={"judul": soup.title.text}
+            isi=""
             for line in content:
-                file.write(line.text)
+                isi+=line.text
+            artikel[page]={"isi": isi}
+    
+            with open("Python/Sandbox/Scrapping/scrap.txt","a+") as file:
+                file.write("\t")
+                file.write(soup.title.text)
                 file.write("\n")
-            file.write("\n")
-
+                for line in content:
+                    file.write(line.text)
+                    file.write("\n")
+                file.write("\n")
         
         driver.get(main_page_oto)
     
