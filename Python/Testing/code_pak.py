@@ -10,10 +10,7 @@ ipot = requests.get("https://www.indopremier.com/ipotnews/newsPages.php?level4=t
 #ipot = requests.get("https://www.indopremier.com/ipotnews/nw-saham.php?level4=stocks")
 #print(ipot.text)
 soup =bs(ipot.content, 'lxml')
-container=soup.find('div', id='divMoreNewsPages')
-print(container)
-for link in container.find_all('a'):
-    print(link.get('href'))
+content=soup.findAll('dl')
 
 # print(soup)
 # for a in link.find_all('a' , href=True):
