@@ -1,1 +1,1 @@
-x
+print(n["nama"],n["rating"])

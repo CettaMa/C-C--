@@ -1,46 +1,47 @@
-import json
+from datetime import date, timedelta
 
-myrokok = { 
-    1 : {"name" : "LA", "Jumlah" : 16, "Jenis" : "Filter", "Hrgsatuan" : 17500},
-    2 : {"name" : "Sukun", "Jumlah" : 12, "Jenis" : "Kretek", "Hrgsatuan" : 13500},
-    3 : {"name" : "Cuhiba", "Jumlah" : 10, "Jenis" : "Cerutu", "Hrgsatuan" : 350000},
+DtBan = {
+    1:{"Merk":"Dunlop", "Fungsi":"Street", "Kualitas":"B", "Ukuran":19, "Harga":1000000},
+    2:{"Merk":"Bridgestone", "Fungsi":"Offroad", "Kualitas":"A", "Ukuran":15, "Harga":1500000},
+    3:{"Merk":"GT Radial", "Fungsi":"Street", "Kualitas":"A", "Ukuran":17, "Harga":1250000},
+    4:{"Merk":"Accelera", "Fungsi":"Racing", "Kualitas":"C", "Ukuran":18, "Harga":800000},
+    5:{"Merk":"Yokohama", "Fungsi":"Racing", "Kualitas":"A", "Ukuran":18, "Harga":2000000}
 }
 
-class Rokok ():
-    def __init__(self,name,jumlah,hrgsatuan,jenis):
-        self.name = name
-        self.jumlah = jumlah
-        self.hrgsatuan = hrgsatuan
-        self.jenis = jenis
-        
+class ban():
+    def __init__(self,brand,quality,size,price,fungsi):
+        self.fungsi= fungsi
+        self.brand = brand
+        self.quality = quality
+        self.size = size
+        self.price = price
+    
+    def tampil(self):
+        x = ' '
+        print("=== Data Jual Ban ===")
+        print(f'\nMerk{x*8}: {self.brand}\nFungsi{x*4}: {self.quality}\nKualitas{x*5}: {self.size}\nUkuran Terbit : {self.price}')
+    
+class jual(ban):
+    def __init__(self,code,dbuy,dsell):
+        self.code = code
+        self.dbuy = dbuy
+        self.dsell = dsell
 
-    def macam(self):
-        if self.jenis=="Kretek":
-            macam="Kesukaan Orang dengan Umur lebih dari 50 tahun";
-        if self.jenis=="Cerutu":
-            macam="Kesukaan Orang dengan Umur 40 Sampai 49 tahun";
-        else : 
-            macam="Kesukaan Orang dengan Umur 18 Sampai 39 tahun";
-        return macam
+    def tampil(self, ban):
+        x = ' '
+        print(f'\nMerk{x*16}: {ban.brand}\nFungsi{x*12}: {ban.quality}\nKualitas{x*13}: {ban.size}\nUkuran Terbit{x*9}: {ban.price}')
+        print(f'Tanggal Pembelian   : {self.dbuy}\nTanggal Penjualan: {self.dsell}')
 
-    def namerokok(self):
-        print("Rokok " + self.name)
-
-    def harga(self):
-        return (self.hrgsatuan*self.jumlah)
-
-class kel(Rokok):
-    def __init__(self):
-    #     for a,b in myrokok.items():
-    #         self.name = b["name"]
-    #         self.jumlah = b["Jumlah"]
-    #         self.hrgsatuan = b["Hrgsatuan"]
-        super.__init__(self)
-    def dampak(self):
-        print(self.name, "Tidak baik untuk kesehatan")
-
-def jberdasar(jberdasar):
-  print("Berjenis :",jberdasar)
-
-for x,y in myrokok.items():
-    p1=kel(y["name"],y["Jumlah"],y["Hrgsatuan"],y["Jenis"])
+    # def hitung(self):
+    #     self.deadline = self.dbuy + timedelta(30)
+    #     if self.dsell > self.deadline:
+    #         ngaret = (self.dsell - self.dbuy).days
+    #         self.denda = ngaret * 2000
+    #         print("Kamu terlambat mengembalikan buku selama {} hari".format(ngaret))
+    #     else:
+    #         print("Kamu telah mengembalikan buku tepat waktu. Terimakasih!")
+list_ban={}
+for x,y in DtBan.items():
+    list_ban[x]=ban(y["Merk"],y["Kualitas"],y["Ukuran"],y["Harga"],y["Fungsi"])
+for x in range(1,len(list_ban)+1):
+    list_ban[x].tampil()

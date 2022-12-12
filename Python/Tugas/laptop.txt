@@ -1,13 +1,14 @@
-1,Asus TUF,Ryzen 6600H,8,RTX 3050,9037794
-2,Asus ROG Strix,Ryzen 6900H,16,RTX 3070,17327632
-3,Lenovo Ideapad Gaming 3,Ryzen 6600H,8,RTX 3060,10284386
-4,Lenovo Legion 7,Intel Core i7-12700H,16,RTX 3080,17483456
-5,HP Victus,Intel Core i5-12600H,8,RTX 3050,8102849
-6,HP Omen,Ryzen 6700H,16,RTX 3070,14990272
-7,Asus Zenbook,Intel Core i7-12800H,32,8991046
-8,MSI Summit,Ryzen 6900H,32,10549287
-9,Lenovo Yoga,Intel Core i7-12700H,32,7588630
-10,HP Spectre,Ryzen 6900U,32,8679398
-11,Asus Vivobook,Ryzen 6600U,16,4565644
-12,MSI Prestige,Intel Core i5-12600H,16,4721468
-13,MSI Raider,Intel Core i9-12900H,64,RTX 3090,35605792
+1,Asus TUF,Ryzen 6600H,8,RTX 3050,580
+2,Asus ROG Strix,Ryzen 6900H,16,RTX 3070,1112
+3,Lenovo Ideapad Gaming 3,Ryzen 6600H,8,RTX 3060,660
+4,Lenovo Legion 7,Intel Core i7-12700H,16,RTX 3080,1122
+5,HP Victus,Intel Core i5-12600H,8,RTX 3050,520
+6,HP Omen,Ryzen 6700H,16,RTX 3070,962
+7,Asus Zenbook,Intel Core i7-12800H,32,577
+8,MSI Summit,Ryzen 6900H,32,677
+9,Lenovo Yoga,Intel Core i7-12700H,32,487
+10,HP Spectre,Ryzen 6900U,32,557
+11,Asus Vivobook,Ryzen 6600U,16,293
+12,MSI Prestige,Intel Core i5-12600H,16,303
+13,MSI Raider,Intel Core i9-12900H,64,RTX 3090,2285
+14,Asus Zephyrus,Intel Core i9-12700H,64,RTX 3080,955
