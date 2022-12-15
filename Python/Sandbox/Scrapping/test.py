@@ -27,7 +27,7 @@ def parser_para():
             for line in content:
                 isi+=line.text
             artikel[page]={"isi": isi}
-    
+     
             with open("Python/Sandbox/Scrapping/scrap.txt","a+") as file:
                 file.write("\t")
                 file.write(soup.title.text)
@@ -44,7 +44,7 @@ url="https://www.cnnindonesia.com/"
 driver=webdriver.Chrome(executable_path='./chromedriver') #menggunakan selenium untuk automasi
 driver.get(url)
 
-otomotif=driver.find_element(By.XPATH,'//*[@id="nav_menu"]/li[7]/a')
+otomotif=driver.find_element(By.XPATH,'//*[@id="nav_menu"]/li[6]/a')
 otomotif.click()
 
 main_page_oto=driver.current_url

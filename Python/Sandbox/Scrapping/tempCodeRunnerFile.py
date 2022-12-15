@@ -1,1 +1,1 @@
-driver.execute_script("window.history.go(-1)")
+get(url)
