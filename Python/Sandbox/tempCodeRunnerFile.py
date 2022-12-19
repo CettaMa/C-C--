@@ -1,1 +1,1 @@
-print(n["nama"],n["rating"])
+print(listban)
