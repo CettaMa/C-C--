@@ -1,1 +1,1 @@
- chrome_options=option
+print(x.get('href'),"\n")
