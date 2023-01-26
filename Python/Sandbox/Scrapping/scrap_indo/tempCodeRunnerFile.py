@@ -1,1 +1,1 @@
-print(stock_info)
+[]

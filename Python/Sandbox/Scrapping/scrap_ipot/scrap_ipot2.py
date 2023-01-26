@@ -19,7 +19,9 @@ for x in daftarlink:
     if "newsDetail" in x.get('href'):
         lnews.append("https://www.ipotnews.com/ipotnews/"+x.get('href'))
 
-for x in lnews:
+for x in lnews[:5]:
+    xaxis=[]
+    yaxis=[]
     print(x,"\n")
     req=requests.get(x)
     soup= BeautifulSoup(req.content,'lxml')
@@ -36,8 +38,10 @@ for x in lnews:
     token_no_stopwords=[w for w in token if not w in stop_word]
     token_filter=[w for w in token_no_stopwords if not w in haram_words]
     dist_word=nltk.FreqDist(token_filter)
+    for x in dist_word.most_common(15):
+        xaxis.append(x[0])
+        yaxis.append(x[1])
     
-
     with open("Python/Sandbox/Scrapping/scrap_ipot/scrap.txt","a+") as file:
         file.write("\t")
         file.write(soup.title.text)
@@ -45,5 +49,11 @@ for x in lnews:
         for x in dist_word.most_common(5):
             file.write(str(x))
         file.write("\n\n")
+    plt.plot(xaxis, yaxis)
+    plt.xticks(rotation=180, ha='right')
+    plt.xlabel("Kata")
+    plt.ylabel("Jumlah")
+    plt.show()
+    input("Done?")
 
 print(len(lnews))
