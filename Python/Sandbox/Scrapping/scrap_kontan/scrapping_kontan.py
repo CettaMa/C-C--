@@ -26,11 +26,10 @@ for n in range(hal):
                 lnews.append("https:"+x.get('href'))
             else:
                 pass
-        
     page+=20 #saat melihat url dari website, terlihat bahwa website menggunakan interval 20 pada setiap page nya, kenaikan ini digunkan website untuk berpindah page
 
 
-fl=open("Python/Sandbox/Scrapping/scrap_kontan/berita.txt","w").close()  
+fl=open("berita.txt","w").close()  
 for url in lnews:
   cari = requests.get(url) #"https://investasi.kontan.co.id") #/communication-cable-systems-ccsi-akan-rights-issue-efek-dilusi-maksimal-1453")
   bscari = bs(cari.content,'lxml')
