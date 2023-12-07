@@ -41,7 +41,7 @@ def parser_para():
     
 url="https://www.cnnindonesia.com/"
 
-driver=webdriver.Chrome(executable_path='./chromedriver') #menggunakan selenium untuk automasi
+driver=webdriver.Chrome(executable_path='.\chromedriver.exe') #menggunakan selenium untuk automasi
 driver.get(url)
 
 otomotif=driver.find_element(By.XPATH,'//*[@id="nav_menu"]/li[6]/a')

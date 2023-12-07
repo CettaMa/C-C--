@@ -9,17 +9,29 @@ import matplotlib.pyplot as plt
 import time
 lnews=[]
 r=HTMLSession()
-req=r.get("https://www.ipotnews.com/ipotnews/newsPages.php?level4=topnews#2")
+req=r.get("https://www.ipotnews.com/ipotnews/newsPages.php?level4=topnews#1")
 req.html.render(sleep=5)
 soup=BeautifulSoup(req.html.raw_html,"html.parser")
 container=soup.find("div",id="divMoreNewsPages")
 daftarlink=container.find_all('a')
-haram_words=["'","-",".","Ipotnews","(",")",",","``","''","%"]
+haram_words=["'","-",".","Ipotnews","(",")",",","``","''","%",":","&"]
+negatif_word=["penurunan", "melemah","turun","menyusut","lemah","melemahnya","negatif","merosot","kejatuhan","mengecewakan","memburuk","penurunan","anjlok","terjerembab","tergelincir","terendah","melorot","merugi","menderita"]
+positif_word=["menguat","kenaikan","bagus","peningkatan","positif","menembus","tertingginya","tinggi","Penguatan","kuat","stabil","tertinggi","melonjak","pertumbuhan","meningkat"]
 for x in daftarlink:
     if "newsDetail" in x.get('href'):
         lnews.append("https://www.ipotnews.com/ipotnews/"+x.get('href'))
 
-for x in lnews[:5]:
+def write():
+    file.write("\t")
+    file.write(soup.title.text)
+    file.write(article)
+    for x in dist_word.most_common(5):
+        file.write(str(x))
+    file.write("\n\n")
+
+for x in lnews[:25]:
+    positif=0
+    negatif=0
     xaxis=[]
     yaxis=[]
     print(x,"\n")
@@ -37,23 +49,34 @@ for x in lnews[:5]:
     stop_word=set(stopwords.words('indonesian')) 
     token_no_stopwords=[w for w in token if not w in stop_word]
     token_filter=[w for w in token_no_stopwords if not w in haram_words]
+    for w in token_filter:
+        if w in negatif_word:
+            negatif+=1
+        elif w in positif_word:
+            positif+=1
     dist_word=nltk.FreqDist(token_filter)
     for x in dist_word.most_common(15):
         xaxis.append(x[0])
         yaxis.append(x[1])
     
-    with open("Python/Sandbox/Scrapping/scrap_ipot/scrap.txt","a+") as file:
-        file.write("\t")
-        file.write(soup.title.text)
-        file.write(article)
-        for x in dist_word.most_common(5):
-            file.write(str(x))
-        file.write("\n\n")
-    plt.plot(xaxis, yaxis)
-    plt.xticks(rotation=180, ha='right')
-    plt.xlabel("Kata")
-    plt.ylabel("Jumlah")
-    plt.show()
-    input("Done?")
+    if positif>negatif :
+        with open("../scrap_positif.txt","a+") as file:
+            write()
+    elif positif<negatif:
+        with open("../scrap_negatif.txt","+a") as file:
+            write()
+    else :
+        with open("../scrap_undecided.txt","+a") as file:
+                  write()   
+    # plt.plot(xaxis, yaxis)
+    # plt.xticks( ha='right')
+    # plt.xlabel("Kata")
+    # plt.ylabel("Jumlah")
+    # plt.show()
+    # choice=input("Done? (y/n)")
+    # if choice=="y" or choice=="Y":
+    #     break 
+    # else: 
+    #     pass
 
 print(len(lnews))

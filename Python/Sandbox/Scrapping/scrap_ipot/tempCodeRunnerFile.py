@@ -1,1 +1,1 @@
-requests
+["menguat","kenaikan","bagus","peningkatan","positif","menembus","tertingginya","tinggi","Penguatan","kuat","stabil","tertinggi","melonjak","pertumbuhan","meningkat"]

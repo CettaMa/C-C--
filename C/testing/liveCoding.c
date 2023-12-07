@@ -1,56 +1,51 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include<stdio.h>
+#include<stdlib.h>
 
-int main() {
-    // int panjang,i=0,x,y, tinggi=0;
+int main(){
+    int x[2][2];
+    int y[2][2];
+    int z[2][2];
+    int i;
+    int b;
 
-    // scanf("%d",&tinggi);
-    // panjang=tinggi*2-1;
-    // for ( i = 0; i < tinggi; i++)
-    // {
-    //     for ( x = 0; x < panjang; x++)
-    //     {   
-    //         if (x==panjang/2)
-    //         {
-    //             printf("*");
-    //         }
-    //         else {
-    //             printf(" ");
-    //         }
-    //     }
-
-    //     printf("\n");
-    // }
-
-    int n,i,x,y,temp;
-    printf("Masukan banyak angka : ");
-    scanf("%d",&n);
-    int arrnumber[n];
-    for ( i = 0; i < n; i++)
-    {
-        scanf("%d",&arrnumber[i]);
-    }
-    for ( i = 0; i < n; i++)
-    {
-        printf("%d ",arrnumber[i]);
-    }
-    print("\n")
-    for ( x = 0; x < n; x++)
-    {
-        for ( y = 0; y <= n; y++)
-        {    
-        if (arrnumber[y]>arrnumber[y+1])
-        {
-            temp=arrnumber[y+1];
-            arrnumber[y+1]=arrnumber[y];
-            arrnumber[y]=temp;
+    printf("====Matrix X====\n");
+    for (i=0;i<2;i++){
+        for(b=0;b<2;b++){
+            printf("Masukkan Nilai matrik baris %d kolom %d :",i+1,b+1);
+            scanf("%d",&x[i][b]);
         }
     }
-    for ( i = 0; i < n; i++)
-    {
-        printf("%d ",arrnumber[i]);
+    for (i=0;i<2;i++){
+    printf("| ");
+    for(b=0;b<2;b++){
+    printf("%d",x[i][b]);
     }
-    
-}
+    printf(" |\n");
+    }
+    printf("====Matrix Y====\n");
+    for (i=0;i<2;i++){
+        for(b=0;b<2;b++){
+        printf("Masukkan Nilai matrik baris %d kolom %d : ",i+1,b+1);scanf("%d",&y[i][b]);
+        }
+    }  
+    for (i=0;i<2;i++){
+        printf("| ");
+        for(b=0;b<2;b++){
+            printf("%d",y[i][b]);
+        }
+    printf(" |\n");
+    }
+    for (i=0;i<2;i++){
+        for(b=0;b<2;b++){
+        z[i][b]=x[i][b]+y[i][b];
+    }
+    }
+    printf("Hasil penjumlahan matrix X dan Y\n");
+    for (i=0;i<2;i++){
+        printf("| ");
+        for(b=0;b<2;b++){
+            printf("%d",z[i][b]);
+        }
+        printf(" |\n");
+    }
 }
