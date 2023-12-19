@@ -1,0 +1,1 @@
+tampil_list(pol_fitness)
