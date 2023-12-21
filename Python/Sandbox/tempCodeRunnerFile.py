@@ -1,1 +1,1 @@
-tampil_list(pol_fitness)
+mutasi(population)
