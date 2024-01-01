@@ -14,7 +14,7 @@ def tampil_list(some_list):
 
 #ini fungsi buat nampilin populasi sama fitnessnya
 def tampil_list_fitt(some_list,some_fit):
-    print(tabulate(zip(some_list,some_fit),headers=["Kromosom","Fitness"]))
+    print(tabulate(zip(some_list,some_fit),headers=["Kromosom","Fitness"],tablefmt="orgtbl"))
     print()
 
 #nested sum, buat nyari total dari sebuah list yaa
